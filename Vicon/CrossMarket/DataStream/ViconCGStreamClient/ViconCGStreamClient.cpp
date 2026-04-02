@@ -745,8 +745,13 @@ void VViconCGStreamClient::ClientThread()
 
   if( Error )
   {
-    m_pSocket->close();
-    // OnDisconnect();
+      try {
+          m_pSocket->close();
+      }
+      catch (boost::wrapexcept<boost::system::system_error>&) {
+          // we ignore errors on closing in error case intentionally
+      }
+        // OnDisconnect();
     return;
   }
   else
