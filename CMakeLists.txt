@@ -37,7 +37,7 @@ add_library(ViconDataStreamSDK_CPP
 
 target_link_libraries(ViconDataStreamSDK_CPP
   PRIVATE
-    Boost::system
+    Boost::boost
     Boost::thread
     Boost::chrono
     Threads::Threads
