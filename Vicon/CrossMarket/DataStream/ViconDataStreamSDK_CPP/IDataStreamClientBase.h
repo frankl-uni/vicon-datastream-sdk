@@ -28,15 +28,18 @@
 /// The SDK client and supporting definitions.
 
 #ifdef WIN32
-#ifdef _DLL
+
+#ifdef _BUILD_STATIC_LIB
+    #define CLASS_DECLSPEC
+#else
+
 #ifdef _EXPORTING
    #define CLASS_DECLSPEC    __declspec(dllexport)
 #else
    #define CLASS_DECLSPEC    __declspec(dllimport)
 #endif // _EXPORTING
-#else
-   #define CLASS_DECLSPEC
-#endif //_DLL
+#endif
+
 #elif defined( __GNUC__ )
 
 #if __GNUC__ < 4
