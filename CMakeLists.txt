@@ -49,13 +49,19 @@ target_include_directories(ViconDataStreamSDK_CPP PUBLIC
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}>"
 )
 
-target_compile_definitions(ViconDataStreamSDK_CPP PRIVATE "_BUILD_STATIC_LIB")
+if(NOT BUILD_SHARED_LIBS)
+  target_compile_definitions(ViconDataStreamSDK_CPP PRIVATE "VICON_BUILD_STATIC_LIB")
+endif()
 
 # Declare an executable
 
 add_executable(ViconDataStreamSDK_CPPTest
   Vicon/CrossMarket/DataStream/ViconDataStreamSDK_CPPTest/ViconDataStreamSDK_CPPTest.cpp
 )
+
+if(NOT BUILD_SHARED_LIBS)
+  target_compile_definitions(ViconDataStreamSDK_CPPTest PRIVATE "VICON_BUILD_STATIC_LIB")
+endif()
 
 target_link_libraries(ViconDataStreamSDK_CPPTest
   ViconDataStreamSDK_CPP

@@ -29,7 +29,7 @@
 
 #ifdef WIN32
 
-#ifdef _BUILD_STATIC_LIB
+#ifdef VICON_BUILD_STATIC_LIB
     #define CLASS_DECLSPEC
 #else
 
